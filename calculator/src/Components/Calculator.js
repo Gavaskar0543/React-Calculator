@@ -7,8 +7,8 @@ class Calculator extends React.Component{
         return(
           <>
            <div className="container w-50 border border-1">
-            <div className=" w-100 h-25 border border-3">
-              display
+            <div className=" w-100 h-25 border border-3" id="display">
+             <input type="text" placeholder="0" />
             </div>
             <div className="container" id='button_outer'>
               
