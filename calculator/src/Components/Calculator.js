@@ -10,7 +10,7 @@ class Calculator extends React.Component{
             <div className=" w-100 h-25 border border-3">
               display
             </div>
-            <div className="container">
+            <div className="container" id='button_outer'>
               
             <div className="buttons-outer">
             <div id="button" className="btn" data-value="AC">
@@ -58,7 +58,7 @@ class Calculator extends React.Component{
         <div id="button" className="btn" data-value="1">
             <span>1</span>
         </div>
-        <div id="button" data-value="+">
+        <div id="button" className="btn" data-value="+">
             <span>+</span>
         </div>
         <div id="button" className="btn zero"  data-value="0">
