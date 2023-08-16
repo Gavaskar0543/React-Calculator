@@ -1,23 +1,37 @@
-import React ,{useState} from 'react';
+import React ,{useEffect, useState} from 'react';
 import Styles from '../Styles/App.module.css'
 function App() {
   const [operand1,setOperand1] = useState(0);
   const [operand2,setOperand2] = useState(0);
   const [operator,setOperator] = useState('');
   const [display,setDisplay] = useState('');
+  
+  /* The `useEffect` hook is used in React to perform side effects in functional components. In this
+  case, the `useEffect` hook is being used to set the initial value of the `display` state to 10.
+  The second argument `[]` is an empty dependency array, which means that the effect will only run
+  once, when the component mounts. */
+  useEffect(() => {
+    setDisplay();
+  },[]);
+  const handleClearBtn = () =>{
+    setDisplay('');
+  }
+  const handleNum = (num) => {
+    console.log(num)
+  }
   return (
    <>
    <div className={Styles.calBody}>
     <div className={Styles.disContainer}>
      
      <div>
-      456
+      {display}
      </div>
     </div>
     <div className={Styles.buttons}> 
-     <div>
+     <div onClick={handleClearBtn}>
       c
-     </div>
+     </div >
      <div>
       +/-
      </div>
@@ -27,7 +41,7 @@ function App() {
      <div className={Styles.orangeBtn}>
       /
      </div>
-     <div>
+     <div onClick={ () => handleNum(7)} >
       7
      </div>
      <div>
