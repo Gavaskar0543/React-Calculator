@@ -13,7 +13,7 @@
     font-size: large;
     font-weight: bolder;
    
-    @media (min-width: 360px) {
+    @media (min-width: 360px) and (max-width:400px) {
         /* CSS rules for screens larger than 768px */
         width:100vw;
        margin-top: 5%;
@@ -21,7 +21,7 @@
     /* Example: Change styles for screens with a width of 768px or more */
 @media (min-width: 768px) {
     /* CSS rules for screens larger than 768px */
-    width:30vw;
+    width:25vw;
 }
     
 }
@@ -49,6 +49,7 @@
 .buttons div{
   
     border:1px solid gray;
+    padding:10%;
     text-align: center;
     font-size: 25px;
     background-color: rgb(214,214,214);
