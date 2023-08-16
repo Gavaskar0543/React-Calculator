@@ -16,8 +16,12 @@ function App() {
   const handleClearBtn = () =>{
     setDisplay('');
   }
-  const handleNum = (num) => {
-    console.log(num)
+  const handleNum = (e) => {
+   let incomeNums = '';
+    incomeNums = e.target.getAttribute('data-value')+incomeNums;
+   setDisplay(display+incomeNums);
+
+   
   }
   return (
    <>
@@ -41,14 +45,14 @@ function App() {
      <div className={Styles.orangeBtn}>
       /
      </div>
-     <div onClick={ () => handleNum(7)} >
+     <div onClick={handleNum} data-value={7} >
       7
+     </div>
+     <div  onClick={handleNum} data-value={8}>
+      8
      </div>
      <div>
       9
-     </div>
-     <div>
-      7
      </div>
      <div className={Styles.orangeBtn}>
       x
