@@ -77,11 +77,11 @@ function App() {
      <div className={Styles.orangeBtn}>
       +
      </div>
-     <div>
+     <div className={Styles.zero}>
       0
      </div>
-     <div>
-      ....
+     <div className={Styles.nonZero}>
+     
      </div>
      <div>
       .

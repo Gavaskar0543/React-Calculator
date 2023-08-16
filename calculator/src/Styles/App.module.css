@@ -58,3 +58,9 @@
     color:white;
     background-color: rgb(247,146,49) !important;
 }
+.zero{
+    border-right:none !important;
+}
+.nonZero{
+    border-left:none !important;
+}
