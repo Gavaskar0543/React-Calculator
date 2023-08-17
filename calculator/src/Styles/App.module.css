@@ -4,6 +4,14 @@
     box-sizing:border-box;
 }
 
+.App{
+    width:100vw;
+    height:100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 
 .calBody{
     width:50vw;
@@ -12,16 +20,22 @@
     font-size: large;
     font-weight: bolder;
    
+    @media (min-width: 260px) {
+        /* CSS rules for screens larger than 768px */
+        width:100vw;
+       margin-top: 5%;
+    }
     @media (min-width: 360px) and (max-width:400px) {
         /* CSS rules for screens larger than 768px */
         width:100vw;
        margin-top: 5%;
     }
     /* Example: Change styles for screens with a width of 768px or more */
-@media (min-width: 768px) {
+@media (min-width: 930px) {
     /* CSS rules for screens larger than 768px */
     width:25vw;
 }
+
     
 }
 
