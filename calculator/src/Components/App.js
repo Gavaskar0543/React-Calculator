@@ -75,6 +75,10 @@ function App() {
     }
   };
   const handleToggleSign = () => {
+    if(display.length == 0){
+      toast.error("No value entered!")
+      return;
+    }
     setDisplay((-parseFloat(display)).toString());
     if (operator !== '') {
       setOperand2(parseFloat(display));
