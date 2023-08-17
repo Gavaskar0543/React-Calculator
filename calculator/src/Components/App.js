@@ -4,41 +4,72 @@ function App() {
   const [operand1,setOperand1] = useState(0);
   const [operand2,setOperand2] = useState(0);
   const [operator,setOperator] = useState('');
-  const [display,setDisplay] = useState(0);
+  const [display,setDisplay] = useState('|');
   
-  /* The `useEffect` hook is used in React to perform side effects in functional components. In this
-  case, the `useEffect` hook is being used to set the initial value of the `display` state to 10.
-  The second argument `[]` is an empty dependency array, which means that the effect will only run
-  once, when the component mounts. */
-  useEffect(() => {
+useEffect(() => {
+  setDisplay('');
+},[])
+ 
+  const handleClearBtn = () => {
     setDisplay('');
-    
-  },[]);
-  const handleClearBtn = () =>{
-    setDisplay('');
-  }
+    setOperand1(0);
+    setOperand2(0);
+    setOperator('');
+  };
   const handleNum = (e) => {
-    const incomeNum = e.target.getAttribute('data-value');
-    setDisplay(display + incomeNum);
+    let inputNum = e.target.getAttribute('data-value');
+    setDisplay(display === '0' ? inputNum : display + inputNum);
 
-    if (operator === '*') {
-      // Assuming multiplication logic
-      const result = parseFloat(display) * parseFloat(incomeNum);
-      setDisplay(result.toString());
-      setOperator(null); // Clear the operator after using it
+    if (operator !== '') {
+      console.log(e.target.getAttribute('data-value'))
+      inputNum = e.target.getAttribute('data-value');
+       setDisplay(display + inputNum);
+      setOperand2(parseFloat(display+inputNum));
+     
     }
-   
   };
   const handleOperation = (value) => {
-    if (value === '*') {
+    if (value === '*' || value === '-' || value === '+' || value === '/') {
       setOperator(value);
-    }
-   
-     else if (value === '=') {
-      // Perform calculations here based on the operator
-      // For example: addition, subtraction, etc.
-      // Update the display with the result
+      setOperand1(parseFloat(display));
+      setDisplay('');
      
+    }
+  };
+      
+  const EqualsToOperations = () => {
+    if (operator === '+') {
+      console.log(operand1,operand2,operator)
+      setDisplay((operand1 + operand2).toString());
+    } else if (operator === '-') {
+      console.log(operand1,operand2,operator)
+      setDisplay((operand1 - operand2).toString());
+    } else if (operator === '*') {
+      console.log(operand1,operand2,operator)
+      setDisplay((operand1 * operand2).toString());
+    } else if (operator === '/') {
+      console.log(operand1,operand2,operator)
+      setDisplay((operand1 / operand2).toString());
+    }
+    setOperand1(0);
+    setOperand2(0);
+    setOperator('');
+  };
+  const handlePercentage = () => {
+    const percentageValue = parseFloat(display) / 100;
+    setDisplay(percentageValue.toString());
+    if (operator !== '') {
+      setOperand2(percentageValue);
+    } else {
+      setOperand1(percentageValue);
+    }
+  };
+  const handleToggleSign = () => {
+    setDisplay((-parseFloat(display)).toString());
+    if (operator !== '') {
+      setOperand2(parseFloat(display));
+    } else {
+      setOperand1(-parseFloat(display));
     }
   };
   return (
@@ -54,13 +85,13 @@ function App() {
      <div onClick={handleClearBtn}>
       c
      </div >
-     <div>
+     <div onClick={handleToggleSign }>
       +/-
      </div>
-     <div>
+     <div onClick={handlePercentage}>
       %
      </div>
-     <div className={Styles.orangeBtn}>
+     <div className={Styles.orangeBtn} onClick={() => handleOperation('/')}>
       /
      </div>
      <div onClick={handleNum} data-value={7} >
@@ -96,7 +127,7 @@ function App() {
      <div onClick={handleNum} data-value={3}>
       3
      </div>
-     <div className={Styles.orangeBtn}>
+     <div className={Styles.orangeBtn} onClick={() => handleOperation('+')}>
       +
      </div>
      <div className={Styles.zero} onClick={handleNum} data-value={0}>
@@ -108,7 +139,7 @@ function App() {
      <div onClick={handleNum} data-value={"."}>
       .
      </div>
-     <div  className={Styles.orangeBtn}  onClick={() => handleOperation('=')}>
+     <div  className={Styles.orangeBtn}  onClick={ EqualsToOperations}>
       =
      </div>
     </div>
