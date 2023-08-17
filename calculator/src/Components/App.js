@@ -1,14 +1,21 @@
 import React ,{useEffect, useState} from 'react';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'; // Import the CSS for styling
+
 import Styles from '../Styles/App.module.css'
 function App() {
   const [operand1,setOperand1] = useState(0);
   const [operand2,setOperand2] = useState(0);
   const [operator,setOperator] = useState('');
-  const [display,setDisplay] = useState('|');
+  const [display,setDisplay] = useState('');
   
 useEffect(() => {
-  setDisplay('');
-},[])
+  
+  if(display.length >= 11){
+   toast.success('limit reached');
+    return;
+  }
+},[display])
  
   const handleClearBtn = () => {
     setDisplay('');
@@ -17,7 +24,10 @@ useEffect(() => {
     setOperator('');
   };
   const handleNum = (e) => {
-    let inputNum = e.target.getAttribute('data-value');
+ if(display.length >= 11){
+  toast.error('limit reached');
+   return;
+ }else {  let inputNum = e.target.getAttribute('data-value');
     setDisplay(display === '0' ? inputNum : display + inputNum);
 
     if (operator !== '') {
@@ -26,7 +36,7 @@ useEffect(() => {
        setDisplay(display + inputNum);
       setOperand2(parseFloat(display+inputNum));
      
-    }
+    }}
   };
   const handleOperation = (value) => {
     if (value === '*' || value === '-' || value === '+' || value === '/') {
@@ -76,7 +86,6 @@ useEffect(() => {
    <>
    <div className={Styles.calBody}>
     <div className={Styles.disContainer}>
-     
      <div>
       {display}
      </div>
@@ -103,6 +112,7 @@ useEffect(() => {
      <div onClick={handleNum} data-value={9}>
       9
      </div>
+     
      <div   className={Styles.orangeBtn} onClick={() => handleOperation('*')} >
       x
      </div>
@@ -144,6 +154,7 @@ useEffect(() => {
      </div>
     </div>
    </div>
+   <ToastContainer /> 
    </>
   );
 }
