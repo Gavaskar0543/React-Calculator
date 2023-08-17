@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'; // Import the CSS for styling
 
@@ -62,7 +62,7 @@ function App() {
     setOperator('');
   };
   const handlePercentage = () => {
-    if(display.length == 0){
+    if(display.length === 0){
       toast.error("No value entered!")
       return;
     }
@@ -75,7 +75,7 @@ function App() {
     }
   };
   const handleToggleSign = () => {
-    if(display.length == 0){
+    if(display.length === 0){
       toast.error("No value entered!")
       return;
     }
