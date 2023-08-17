@@ -69,43 +69,43 @@ function App() {
      <div  onClick={handleNum} data-value={8}>
       8
      </div>
-     <div>
+     <div onClick={handleNum} data-value={9}>
       9
      </div>
      <div   className={Styles.orangeBtn} onClick={() => handleOperation('*')} >
       x
      </div>
-     <div>
+     <div onClick={handleNum} data-value={4}>
       4
      </div>
-     <div>
+     <div onClick={handleNum} data-value={5}>
      5
      </div>
-     <div>
+     <div onClick={handleNum} data-value={6}>
       6
      </div>
      <div className={Styles.orangeBtn} onClick={() => handleOperation('-')}>
       -
      </div>
-     <div>
+     <div onClick={handleNum} data-value={1}>
       1
      </div>
-     <div>
+     <div onClick={handleNum} data-value={2}>
       2
      </div>
-     <div>
+     <div onClick={handleNum} data-value={3}>
       3
      </div>
      <div className={Styles.orangeBtn}>
       +
      </div>
-     <div className={Styles.zero}>
+     <div className={Styles.zero} onClick={handleNum} data-value={0}>
       0
      </div>
-     <div className={Styles.nonZero}>
+     <div className={Styles.nonZero} onClick={handleNum} data-value={0}>
      
      </div>
-     <div>
+     <div onClick={handleNum} data-value={"."}>
       .
      </div>
      <div  className={Styles.orangeBtn}  onClick={() => handleOperation('=')}>
