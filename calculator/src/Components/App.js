@@ -9,13 +9,7 @@ function App() {
   const [operator,setOperator] = useState('');
   const [display,setDisplay] = useState('');
   
-useEffect(() => {
-  
-  if(display.length >= 11){
-   toast.success('limit reached');
-    return;
-  }
-},[display])
+
  
   const handleClearBtn = () => {
     setDisplay('');
